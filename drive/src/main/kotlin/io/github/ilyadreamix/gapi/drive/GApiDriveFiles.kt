@@ -8,6 +8,7 @@ import io.github.ilyadreamix.gapi.drive.enums.GApiDriveCorpora
 import io.github.ilyadreamix.gapi.drive.enums.GApiDrivePermissionForView
 import io.github.ilyadreamix.gapi.drive.enums.GApiDriveSortKey
 import io.github.ilyadreamix.gapi.drive.enums.GApiDriveSpace
+import io.github.ilyadreamix.gapi.drive.model.GApiDriveFile
 import io.github.ilyadreamix.gapi.drive.model.GApiDriveFileList
 import io.github.ilyadreamix.gapi.drive.utility.buildDriveQuery
 import io.ktor.client.request.*
@@ -15,6 +16,7 @@ import io.ktor.client.request.*
 class GApiDriveFiles internal constructor(accessToken: String) : GApiService(GApiServiceType.Drive, accessToken) {
     /**
      * Lists the user's files.
+     * @param fields Determines exact [GApiDriveFile] fields that you need.
      * @param corpora Bodies of items (files/documents) to which the query applies.
      * @param driveId ID of the shared drive to search.
      * @param includeItemsFromAllDrives Whether both My Drive and shared drive items should be included in results.
@@ -26,10 +28,11 @@ class GApiDriveFiles internal constructor(accessToken: String) : GApiService(GAp
      * @param query A query for filtering the file results. See [buildDriveQuery].
      * @param spaces A comma-separated list of spaces to query within the [corpora].
      * @param supportsAllDrives Whether the requesting application supports both My Drives and shared drives.
-     * @param permissionForView wSpecifies which additional view's permissions to include in the response.
+     * @param permissionForView Specifies which additional view's permissions to include in the response.
      * @param labelsIds Set of IDs of labels to include in the labelInfo part of the response.
      */
     suspend fun list(
+        fields: String? = null,
         corpora: GApiDriveCorpora? = null,
         driveId: String? = null,
         includeItemsFromAllDrives: Boolean? = null,
@@ -43,6 +46,7 @@ class GApiDriveFiles internal constructor(accessToken: String) : GApiService(GAp
         labelsIds: Set<String>? = null
     ): GApiDriveFileList {
         val response = httpClient.get("files") {
+            parameter("fields", fields)
             parameter("corpora", corpora?.value)
             parameter("driveId", driveId)
             parameter("includeItemsFromAllDrives", includeItemsFromAllDrives)
