@@ -12,5 +12,6 @@ repositories {
 }
 
 dependencies {
+    implementation(libs.kotlin.reflection)
     api(project(":common"))
 }

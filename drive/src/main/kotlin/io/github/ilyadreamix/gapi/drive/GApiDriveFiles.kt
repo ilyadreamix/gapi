@@ -10,13 +10,14 @@ import io.github.ilyadreamix.gapi.drive.enums.GApiDriveSortKey
 import io.github.ilyadreamix.gapi.drive.enums.GApiDriveSpace
 import io.github.ilyadreamix.gapi.drive.model.GApiDriveFile
 import io.github.ilyadreamix.gapi.drive.model.GApiDriveFileList
+import io.github.ilyadreamix.gapi.drive.utility.buildDriveFields
 import io.github.ilyadreamix.gapi.drive.utility.buildDriveQuery
 import io.ktor.client.request.*
 
 class GApiDriveFiles internal constructor(accessToken: String) : GApiService(GApiServiceType.Drive, accessToken) {
     /**
      * Lists the user's files.
-     * @param fields Determines exact [GApiDriveFile] fields that you need.
+     * @param fields Determines exact [GApiDriveFile] fields that you need. See [buildDriveFields].
      * @param corpora Bodies of items (files/documents) to which the query applies.
      * @param driveId ID of the shared drive to search.
      * @param includeItemsFromAllDrives Whether both My Drive and shared drive items should be included in results.
@@ -32,7 +33,7 @@ class GApiDriveFiles internal constructor(accessToken: String) : GApiService(GAp
      * @param labelsIds Set of IDs of labels to include in the labelInfo part of the response.
      */
     suspend fun list(
-        fields: String? = null,
+        fields: String? = "*",
         corpora: GApiDriveCorpora? = null,
         driveId: String? = null,
         includeItemsFromAllDrives: Boolean? = null,
