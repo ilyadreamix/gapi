@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "io.github.ilyadreamix.gapi"
-version = "1.0.0"
+version = "1.0.1"
 
 repositories {
     mavenCentral()
@@ -22,7 +22,7 @@ afterEvaluate {
             from(components.findByName("java"))
             groupId = "com.github.ilyadreamix.gapi"
             artifactId = "gapi"
-            version = "1.0.0"
+            version = "1.0.1"
         }
     }
 }
