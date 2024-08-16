@@ -5,7 +5,7 @@ import io.github.ilyadreamix.gapi.drive.GApiDrive
 /**
  * **GApi**
  *
- * GApi is a Kotlin library that allows you to access Google services API.
+ * GApi is a Kotlin library that makes it easy to access Google services APIs.
  *
  * **Google Drive API:** [GApiDrive]
  */
