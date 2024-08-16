@@ -19,7 +19,7 @@ dependencies {
 afterEvaluate {
     publishing {
         publications.create<MavenPublication>("release") {
-            from(components.findByName("release"))
+            from(components.findByName("java"))
             groupId = "com.github.ilyadreamix.gapi"
             artifactId = "gapi"
             version = "1.0.0"
