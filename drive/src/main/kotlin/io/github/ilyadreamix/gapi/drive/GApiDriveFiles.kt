@@ -20,6 +20,11 @@ import io.ktor.http.*
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
+/**
+ * Rest resource: `files`
+ *
+ * **See Also:** [Official documentation](https://developers.google.com/drive/api/reference/rest/v3/files)
+ */
 class GApiDriveFiles internal constructor(accessToken: String) : GApiService(GApiServiceType.Drive, accessToken) {
     /**
      * Lists the user's files.
