@@ -19,5 +19,4 @@ dependencies {
     api(libs.ktor.client.json)
     api(libs.ktor.client.logging)
     api(libs.kotlinLogging)
-    api(libs.logback)
 }

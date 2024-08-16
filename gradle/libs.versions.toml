@@ -3,7 +3,6 @@ kotlin = "2.0.10"
 kotlinx-serialization-json = "1.7.1"
 ktor = "2.3.12"
 kotlinLogging = "7.0.0"
-logback = "1.5.6"
 
 [libraries]
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
@@ -14,7 +13,6 @@ ktor-client-json = { module = "io.ktor:ktor-serialization-kotlinx-json" }
 ktor-client-logging = { module = "io.ktor:ktor-client-logging" }
 kotlin-reflection = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
 kotlinLogging = { module = "io.github.oshai:kotlin-logging-jvm", version.ref = "kotlinLogging" }
-logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
 
 [plugins]
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

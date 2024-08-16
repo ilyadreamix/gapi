@@ -19,6 +19,8 @@ class GApiDriveFieldsBuilder {
         return this
     }
 
+    fun select(fields: List<KProperty<*>>) = select(*fields.toTypedArray())
+
     fun selectAll(vararg fields: KProperty<*>): GApiDriveFieldsBuilder {
         val fieldsNames = fields.map { it.findSerialName() + "(*)" }
         parts += fieldsNames

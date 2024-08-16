@@ -11,5 +11,6 @@ repositories {
 }
 
 dependencies {
-    implementation(project(":drive"))
+    api(project(":drive"))
+    api(project(":sheets"))
 }

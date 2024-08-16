@@ -16,7 +16,10 @@ import io.github.ilyadreamix.gapi.drive.utility.buildDriveFields
 import io.github.ilyadreamix.gapi.drive.utility.buildDriveQuery
 import io.ktor.client.request.*
 import io.ktor.client.request.forms.*
-import io.ktor.http.*
+import io.ktor.http.ContentType
+import io.ktor.http.HttpHeaders
+import io.ktor.http.contentType
+import io.ktor.http.headersOf
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
@@ -105,7 +108,7 @@ class GApiDriveFiles internal constructor(accessToken: String) : GApiService(GAp
         permissionForView: GApiDrivePermissionForView? = null,
         labelsIds: Set<String>? = null
     ): GApiDriveFile {
-        val response = httpClient.get("files") {
+        val response = httpClient.get("files/$fileId") {
             parameter("fileId", fileId)
             parameter("fields", fields)
             parameter("supportsAllDrives", supportsAllDrives)
@@ -137,8 +140,8 @@ class GApiDriveFiles internal constructor(accessToken: String) : GApiService(GAp
         permissionForView: GApiDrivePermissionForView? = null,
         labelsIds: Set<String>? = null
     ): ByteArray {
-        val response = httpClient.get("files") {
-            parameter("fileId", fileId)
+        val response = httpClient.get("files/$fileId") {
+            parameter("alt", "media")
             parameter("acknowledgeAbuse", acknowledgeAbuse)
             parameter("supportsAllDrives", supportsAllDrives)
             parameter("includePermissionsForView", permissionForView?.value)
@@ -160,8 +163,7 @@ class GApiDriveFiles internal constructor(accessToken: String) : GApiService(GAp
      * @param supportsAllDrives Whether the requesting application supports both My Drives and shared drives.
      */
     suspend fun delete(fileId: String, supportsAllDrives: Boolean? = null) {
-        val response = httpClient.delete("files") {
-            parameter("fileId", fileId)
+        val response = httpClient.delete("files/$fileId") {
             parameter("supportsAllDrives", supportsAllDrives)
         }
 
