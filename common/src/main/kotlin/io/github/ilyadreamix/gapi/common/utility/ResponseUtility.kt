@@ -6,11 +6,19 @@ import io.ktor.client.call.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
 
-suspend inline fun <reified T> HttpResponse.getOrThrow(): T {
+suspend fun HttpResponse.checkIsSuccess() {
     if (!this.status.isSuccess()) {
         val errorResponse = this.body<GApiErrorResponse>()
         throw GApiException(errorResponse)
     }
+}
 
+suspend inline fun <reified T> HttpResponse.getOrThrow(): T {
+    this.checkIsSuccess()
     return this.body<T>()
+}
+
+suspend fun HttpResponse.getBytesOrThrow(): ByteArray {
+    this.checkIsSuccess()
+    return this.readBytes()
 }

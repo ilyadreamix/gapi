@@ -7,7 +7,9 @@ import io.ktor.client.plugins.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.plugins.logging.*
 import io.ktor.client.request.*
+import io.ktor.client.request.forms.*
 import io.ktor.http.*
+import io.ktor.http.content.*
 import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.json.Json
 
@@ -67,17 +69,15 @@ class GApiHttpClient(
             block = block
         )
 
-    private suspend fun makeRequest(
-        method: HttpMethod,
+    suspend fun submitFormWithBinaryData(
         url: String,
         overrideUrl: Boolean = false,
+        formData: List<PartData>,
         block: HttpRequestBuilder.() -> Unit
-    ) = mHttpClient.request(
-        urlString = if (overrideUrl) url else "${mServiceType.url}/$url",
-        block = {
-            this.method = method
-            apply(block)
-        }
+    ) = mHttpClient.submitFormWithBinaryData(
+        url = if (overrideUrl) url else "${mServiceType.url}/$url",
+        formData = formData,
+        block = block
     )
 
     private fun buildHttpClient(): HttpClient {
