@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.kotlin)
+    alias(libs.plugins.maven.publish)
 }
 
 group = "io.github.ilyadreamix.gapi.core"
@@ -17,4 +18,15 @@ dependencies {
     api(libs.ktor.client.contentNegotiation)
     api(libs.ktor.client.json)
     api(libs.ktor.client.logging)
+}
+
+afterEvaluate {
+    publishing {
+        publications.create<MavenPublication>("mavenJava") {
+            from(components.findByName("java"))
+            groupId = "com.github.ilyadreamix.gapi"
+            artifactId = "core"
+            version = libs.versions.gapi.get()
+        }
+    }
 }
