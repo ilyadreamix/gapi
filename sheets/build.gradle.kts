@@ -12,8 +12,8 @@ repositories {
 
 afterEvaluate {
     publishing {
-        publications.create<MavenPublication>("release") {
-            from(components.findByName("release"))
+        publications.create<MavenPublication>("mavenJava") {
+            from(components.findByName("java"))
             groupId = "com.github.ilyadreamix.gapi"
             artifactId = "sheets"
             version = libs.versions.gapi.get()
