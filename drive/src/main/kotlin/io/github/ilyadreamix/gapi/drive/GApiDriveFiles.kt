@@ -1,11 +1,11 @@
 package io.github.ilyadreamix.gapi.drive
 
-import io.github.ilyadreamix.gapi.common.service.GApiService
-import io.github.ilyadreamix.gapi.common.service.GApiServiceType
 import io.github.ilyadreamix.gapi.common.utility.Comma
 import io.github.ilyadreamix.gapi.common.utility.checkIsSuccess
 import io.github.ilyadreamix.gapi.common.utility.getBytesOrThrow
 import io.github.ilyadreamix.gapi.common.utility.getOrThrow
+import io.github.ilyadreamix.gapi.core.service.GApiService
+import io.github.ilyadreamix.gapi.core.service.GApiServiceType
 import io.github.ilyadreamix.gapi.drive.enums.GApiDriveCorpora
 import io.github.ilyadreamix.gapi.drive.enums.GApiDrivePermissionForView
 import io.github.ilyadreamix.gapi.drive.enums.GApiDriveSortKey

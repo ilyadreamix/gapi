@@ -1,10 +1,20 @@
 plugins {
     alias(libs.plugins.kotlin)
+    alias(libs.plugins.maven.publish)
 }
 
 group = "io.github.ilyadreamix.gapi.sheets"
-version = "1.0.0"
+version = libs.versions.gapi.get()
 
 repositories {
     mavenCentral()
+}
+
+publishing {
+    publications.create<MavenPublication>("release") {
+        from(components.findByName("release"))
+        groupId = "com.github.ilyadreamix.gapi"
+        artifactId = "sheets"
+        version = libs.versions.gapi.get()
+    }
 }

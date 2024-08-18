@@ -1,7 +1,7 @@
-package io.github.ilyadreamix.gapi.common.service
+package io.github.ilyadreamix.gapi.core.service
 
-import io.github.ilyadreamix.gapi.common.etc.logger
-import io.github.ilyadreamix.gapi.common.http.GApiHttpClient
+import io.github.ilyadreamix.gapi.core.etc.logger
+import io.github.ilyadreamix.gapi.core.http.GApiHttpClient
 
 abstract class GApiService(type: GApiServiceType, accessToken: String) {
     protected val httpClient = GApiHttpClient(

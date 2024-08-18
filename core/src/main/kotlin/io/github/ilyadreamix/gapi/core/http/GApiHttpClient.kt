@@ -1,6 +1,6 @@
-package io.github.ilyadreamix.gapi.common.http
+package io.github.ilyadreamix.gapi.core.http
 
-import io.github.ilyadreamix.gapi.common.service.GApiServiceType
+import io.github.ilyadreamix.gapi.core.service.GApiServiceType
 import io.ktor.client.*
 import io.ktor.client.engine.cio.*
 import io.ktor.client.plugins.*
@@ -17,7 +17,7 @@ class GApiHttpClient(
     serviceType: GApiServiceType,
     accessToken: String,
     retryAttempts: Int? = null,
-    logLevel: LogLevel = LogLevel.NONE
+    logLevel: LogLevel = LogLevel.ALL
 ) {
     private val mServiceType = serviceType
     private val mAccessToken = accessToken
