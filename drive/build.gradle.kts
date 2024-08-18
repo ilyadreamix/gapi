@@ -16,14 +16,3 @@ dependencies {
     implementation(project(":core"))
     api(project(":common"))
 }
-
-afterEvaluate {
-    publishing {
-        publications.create<MavenPublication>("mavenJava") {
-            from(components.findByName("java"))
-            groupId = "com.github.ilyadreamix.gapi"
-            artifactId = "drive"
-            version = libs.versions.gapi.get()
-        }
-    }
-}
