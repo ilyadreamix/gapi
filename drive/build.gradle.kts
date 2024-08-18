@@ -13,7 +13,7 @@ repositories {
 
 dependencies {
     implementation(libs.kotlin.reflection)
-    implementation(project(":core"))
+    api(project(":core"))
     api(project(":common"))
 }
 
