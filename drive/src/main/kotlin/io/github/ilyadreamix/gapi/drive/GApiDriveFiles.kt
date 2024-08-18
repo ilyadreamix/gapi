@@ -99,7 +99,7 @@ class GApiDriveFiles internal constructor(accessToken: String) : GApiService(GAp
      * @param fields Determines exact [GApiDriveFile] fields that you need. See [buildDriveFields].
      * @param supportsAllDrives Whether the requesting application supports both My Drives and shared drives.
      * @param permissionForView Specifies which additional view's permissions to include in the response.
-     * @param labelsIds Set of IDs of labels to include in the labelInfo part of the response.
+     * @param labelsIds Set of IDs of labels to include in the [GApiDriveFile.labelInfo] part of the response.
      */
     suspend fun getMetadata(
         fileId: String,
@@ -315,7 +315,7 @@ class GApiDriveFiles internal constructor(accessToken: String) : GApiService(GAp
         useContentAsIndexableText: Boolean? = null,
         permissionForView: GApiDrivePermissionForView? = null,
         labelsIds: Set<String>? = null
-    ) {
+    ): GApiDriveFile {
         val response = httpClient.post("files") {
             parameter("uploadType", "multipart")
             parameter("fields", fields)
