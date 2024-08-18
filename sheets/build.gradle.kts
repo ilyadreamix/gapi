@@ -10,11 +10,13 @@ repositories {
     mavenCentral()
 }
 
-publishing {
-    publications.create<MavenPublication>("release") {
-        from(components.findByName("release"))
-        groupId = "com.github.ilyadreamix.gapi"
-        artifactId = "sheets"
-        version = libs.versions.gapi.get()
+afterEvaluate {
+    publishing {
+        publications.create<MavenPublication>("release") {
+            from(components.findByName("release"))
+            groupId = "com.github.ilyadreamix.gapi"
+            artifactId = "sheets"
+            version = libs.versions.gapi.get()
+        }
     }
 }
