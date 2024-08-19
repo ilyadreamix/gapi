@@ -332,6 +332,7 @@ class GApiDriveFiles internal constructor(accessToken: String) : GApiService(GAp
             }
 
             setBody(file)
+            contentType(ContentType.Application.Json)
         }
 
         return response.getOrThrow()
